@@ -37,6 +37,14 @@ function printBibleChapter() {
     document.getElementById("text").innerHTML = text + verseText;
 }
 
+function generateBookOptions() {
+    const bookSelect = document.querySelector('select[name="book"]');
+    for (let book in bible) {
+        bookSelect.add(new Option(abbreviations[book], book));
+    }
+    createChapterSelectOptions();
+}
+
 document.getElementById("button").addEventListener("click", function () {
     saveSelectionToLocalStorage();
     printBibleChapter();
@@ -46,5 +54,6 @@ document.querySelector('select[name="book"]').addEventListener('change', functio
     createChapterSelectOptions();
 });
 
+generateBookOptions();
 readSelectionsFromLocalStorage();
 printBibleChapter();
