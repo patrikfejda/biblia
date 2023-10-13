@@ -60,6 +60,61 @@ function generateBookOptions() {
     createChapterSelectOptions();
 }
 
+function handleDarkMode() {
+    if (localStorage.getItem('mode') === 'dark') {
+        disableDarkMode();
+        localStorage.setItem('mode', 'light');
+    } else {
+        enableDarkMode();
+        localStorage.setItem('mode', 'dark');
+    }
+}
+
+
+function enableDarkMode() {
+    const darkModeToggle = document.getElementById('dark-mode-toggle');
+    darkModeToggle.textContent = 'Switch to light mode';
+    darkModeToggle.classList.remove('text-black');
+    document.body.classList.remove('bg-white', 'text-black');
+    document.getElementById('main-card').classList.remove('bg-gray-200');
+    document.getElementById('book-select').classList.remove('bg-gray-200');
+    document.getElementById('chapter-select').classList.remove('bg-gray-200');
+
+    darkModeToggle.classList.add('text-white');
+    document.body.classList.add('bg-black', 'text-white');
+    document.getElementById('main-card').classList.add('bg-gray-700');
+    document.getElementById('book-select').classList.add('bg-gray-700');
+    document.getElementById('chapter-select').classList.add('bg-gray-700');
+}
+
+function disableDarkMode() {
+    const darkModeToggle = document.getElementById('dark-mode-toggle');
+    darkModeToggle.textContent = 'Switch to dark mode';
+    darkModeToggle.classList.remove('text-white');
+    document.body.classList.remove('bg-black', 'text-white');
+    document.getElementById('main-card').classList.remove('bg-gray-700');
+    document.getElementById('book-select').classList.remove('bg-gray-700');
+    document.getElementById('chapter-select').classList.remove('bg-gray-700');
+
+    darkModeToggle.classList.add('text-black');
+    document.body.classList.add('bg-white', 'text-black');
+    document.getElementById('main-card').classList.add('bg-gray-200');
+    document.getElementById('book-select').classList.add('bg-gray-200');
+    document.getElementById('chapter-select').classList.add('bg-gray-200');
+}
+
+function setInitialMode() {
+    if (!localStorage.getItem('mode')) {
+        localStorage.setItem('mode', 'light');
+    }
+
+    if (localStorage.getItem('mode') === 'dark') {
+        enableDarkMode();
+    } else {
+        disableDarkMode();
+    }
+}
+
 document.querySelector('select[name="book"]').addEventListener('change', function () {
     createChapterSelectOptions();
     saveSelectionToLocalStorage();
@@ -71,6 +126,12 @@ document.querySelector('select[name="chapter"]').addEventListener('change', func
     printBibleChapter();
 });
 
+
+document.getElementById('dark-mode-toggle').addEventListener('click', () => {
+    handleDarkMode()
+});
+
 generateBookOptions();
 readSelectionsFromLocalStorage();
 printBibleChapter();
+setInitialMode()
