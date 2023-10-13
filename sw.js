@@ -1,9 +1,11 @@
 self.addEventListener('install', (e) => {
     e.waitUntil(
         caches.open('fox-store').then((cache) => cache.addAll([
-            '/packlist/',
-            '/packlist/index.html',
-            '/packlist/index.js',
+            '/biblia/',
+            '/biblia/index.html',
+            '/biblia/index.js',
+            '/biblia/bible.js',
+            '/biblia/main.js',
         ])),
     );
 });
