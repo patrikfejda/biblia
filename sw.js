@@ -4,8 +4,9 @@ self.addEventListener('install', (e) => {
             '/biblia/',
             '/biblia/index.html',
             '/biblia/index.js',
-            '/biblia/bible.js',
             '/biblia/main.js',
+            '/biblia/bible.js',
+            'https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css'
         ])),
     );
 });
