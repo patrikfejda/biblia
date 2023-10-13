@@ -1,9 +1,3 @@
-if ('serviceWorker' in navigator) {
-    navigator.serviceWorker
-        .register('/homescreen/sw.js')
-        .then(() => { console.log('Service Worker Registered'); });
-}
-
 function createChapterSelectOptions() {
     const selectedBook = document.querySelector('select[name="book"]').value;
     const chaptersCount = numberOfChaptersInBooks[selectedBook];
