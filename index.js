@@ -1,10 +1,9 @@
-
 function createChapterSelectOptions() {
-    var book = document.querySelector('select[name="book"]').value;
-    var chapters = numberOfChaptersInBooks[book];
+    var selectedBook = document.querySelector('select[name="book"]').value;
+    var chaptersCount = numberOfChaptersInBooks[selectedBook];
     var select = document.querySelector('select[name="chapter"]');
     select.innerHTML = '';
-    for (var i = 1; i <= chapters; i++) {
+    for (var i = 1; i <= chaptersCount; i++) {
         var option = document.createElement('option');
         option.value = i;
         option.innerHTML = i;
@@ -12,50 +11,48 @@ function createChapterSelectOptions() {
     }
 }
 
+function saveSelectionToLocalStorage() {
+    var bookName = document.querySelector('select[name="book"]').value;
+    var chapterName = document.querySelector('select[name="chapter"]').value;
+    localStorage.setItem("bookName", bookName);
+    localStorage.setItem("chapterName", chapterName);
+}
+
+function readSelectionsFromLocalStorage() {
+    var storedBookName = localStorage.getItem("bookName");
+    var storedChapterName = localStorage.getItem("chapterName");
+
+    if (storedBookName) {
+        document.querySelector('select[name="book"]').value = storedBookName;
+    }
+    if (storedChapterName) {
+        createChapterSelectOptions();
+        document.querySelector('select[name="chapter"]').value = storedChapterName;
+    }
+}
+
+function printBibleChapter() {
+    var bookName = document.querySelector('select[name="book"]').value;
+    var bookNameHumanReadable = humanReadableFormat[bookName];
+    var chapterName = document.querySelector('select[name="chapter"]').value;
+    var text = `<h1>${bookNameHumanReadable} kap. ${chapterName}</h1>`;
+    var chapter = bible[bookName][chapterName];
+    var verseText = '';
+    for (var verseNumber in chapter) {
+        var verse = chapter[verseNumber];
+        verseText += `<sup>${verseNumber}</sup> ${verse}<br>`;
+    }
+    document.getElementById("text").innerHTML = text + verseText;
+}
+
+document.getElementById("button").addEventListener("click", function () {
+    saveSelectionToLocalStorage();
+    printBibleChapter();
+});
+
 document.querySelector('select[name="book"]').addEventListener('change', function () {
     createChapterSelectOptions();
 });
 
-function saveSelectionToLocalstorage() {
-    var book_name = document.querySelector('select[name="book"]').value;
-    var chapter_name = document.querySelector('select[name="chapter"]').value;
-    localStorage.setItem("book_name", book_name);
-    localStorage.setItem("chapter_name", chapter_name);
-}
-
-function readSelectionsFromLocalstorage() {
-    stored_book_name = localStorage.getItem("book_name");
-    stored_chapter_name = localStorage.getItem("chapter_name");
-
-    if (stored_book_name) {
-        document.querySelector('select[name="book"]').value = stored_book_name;
-    }
-    if (stored_chapter_name) {
-        createChapterSelectOptions();
-        document.querySelector('select[name="chapter"]').value = stored_chapter_name;
-    }
-}
-readSelectionsFromLocalstorage();
+readSelectionsFromLocalStorage();
 printBibleChapter();
-
-function printBibleChapter() {
-    var book_name = document.querySelector('select[name="book"]').value;
-    var book_name_human_readable = humanReadableFormat[book_name]
-    var chapter_name = document.querySelector('select[name="chapter"]').value;
-    text = `<h1>${book_name_human_readable} kap. ${chapter_name}</h1>`;
-    chapter = bible[book_name][chapter_name];
-    document.getElementById("text").innerHTML = text;
-    for (verse_number in chapter) {
-        verse = chapter[verse_number];
-        // append verse_number, " ", verse, "<br>" to text
-        text += `<sup>${verse_number}</sup> ${verse}<br>`;
-        // text += verse_number + " " + verse + "<br>";
-    }
-    document.getElementById("text").innerHTML = text;
-
-}
-
-document.getElementById("button").addEventListener("click", function () {
-    saveSelectionToLocalstorage();
-    printBibleChapter();
-});
