@@ -32,9 +32,24 @@ function printBibleChapter() {
     const bookName = document.querySelector('select[name="book"]').value;
     const chapterName = document.querySelector('select[name="chapter"]').value;
     const chapter = bible[bookName][chapterName];
-    const text = `<h1>${humanReadableFormat[bookName]} kap. ${chapterName}</h1>`;
-    const verseText = Object.entries(chapter).map(([verseNumber, verse]) => `<sup>${verseNumber}</sup> ${verse}<br>`).join('');
-    document.getElementById("text").innerHTML = text + verseText;
+
+    const container = document.getElementById("text");
+    container.innerHTML = '';
+
+    const title = document.createElement('h1');
+    title.textContent = `${humanReadableFormat[bookName]} kap. ${chapterName}`;
+    title.classList.add('text-2xl', 'mb-4', 'font-bold');
+
+    const verseText = document.createElement('div');
+    Object.entries(chapter).forEach(([verseNumber, verse]) => {
+        const verseElement = document.createElement('div');
+        verseElement.innerHTML = `<sup class="text-sm mr-2">${verseNumber}</sup>${verse}`;
+        verseElement.classList.add('mb-2');
+        verseText.appendChild(verseElement);
+    });
+
+    container.appendChild(title);
+    container.appendChild(verseText);
 }
 
 function generateBookOptions() {
