@@ -60,13 +60,15 @@ function generateBookOptions() {
     createChapterSelectOptions();
 }
 
-document.getElementById("button").addEventListener("click", function () {
+document.querySelector('select[name="book"]').addEventListener('change', function () {
+    createChapterSelectOptions();
     saveSelectionToLocalStorage();
     printBibleChapter();
 });
 
-document.querySelector('select[name="book"]').addEventListener('change', function () {
-    createChapterSelectOptions();
+document.querySelector('select[name="chapter"]').addEventListener('change', function () {
+    saveSelectionToLocalStorage();
+    printBibleChapter();
 });
 
 generateBookOptions();
