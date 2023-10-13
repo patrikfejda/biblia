@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Biblia SK</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <script src="init.js" defer></script>
+    <script src="sw.js"></script>
+    <script src="bible.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="manifest" href="manifest.webmanifest">
+    <link rel="icon" href="public/favicon.png" type="image/png">
+
+</head>
+
+<body class="bg-white p-4">
+    <div class="flex flex-col items-center max-w-4xl mx-auto bg-gray-200 p-4 rounded-2xl">
+        <div class="flex items-center mb-4">
+            <select name="book" aria-label="Zvolite knihu" class="p-2 mr-2"></select>
+            <select name="chapter" aria-label="Zvolite kapitolu" class="p-2 mr-2"></select>
+        </div>
+        <div id="text"></div>
+    </div>
+    <script src="index.js"></script>
+</body>
+
+</html>

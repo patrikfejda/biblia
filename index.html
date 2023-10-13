@@ -1,30 +1,174 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-US">
 
 <head>
-    <title>Biblia SK</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="mobile-web-app-capable" content="yes">
-    <script src="init.js" defer></script>
-    <script src="sw.js"></script>
-    <script src="bible.js"></script>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <title>packlist</title>
+    <link rel="icon" href="suitcase.png">
+    <script src="index.js" defer></script>
     <link rel="manifest" href="manifest.webmanifest">
-    <link rel="icon" href="public/favicon.png" type="image/png">
-
 </head>
 
-<body class="bg-white p-4">
-    <div class="flex flex-col items-center max-w-4xl mx-auto bg-gray-200 p-4 rounded-2xl">
-        <div class="flex items-center mb-4">
-            <select name="book" aria-label="Zvolite knihu" class="p-2 mr-2"></select>
-            <select name="chapter" aria-label="Zvolite kapitolu" class="p-2 mr-2"></select>
-        </div>
-        <div id="text"></div>
+
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        background: #151515;
+        color: #eaeaea;
+        font-size: 50px;
+        line-height: 1.7;
+        font-family: Monaco, "Bitstream Vera Sans Mono", "Lucida Console", Terminal, monospace;
+    }
+    
+    .container {
+        width: 100%;
+        display: block;
+        margin: 0 20px 0 20px
+    }
+    
+    ul {
+        list-style-type: none;
+    }
+    
+    input[type=checkbox] {
+        width: 40px;
+        height: 40px;
+        margin-right: 10px;
+    }
+</style>
+
+<body>
+
+    <div class="container">
+        <h2 id="kozmeticka_tasticka">KOZMETICKÁ TAŠTIČKA</h2>
+        <ul>
+            <li><label><input id="fenistil" type="checkbox">Fenistil</label></li>
+            <li><label><input id="manikurove_noznicky" type="checkbox">Manikúrové nožničky</label></li>
+            <li><label><input id="bodygel" type="checkbox">Bodygel</label></li>
+            <li><label><input id="lieky" type="checkbox">Lieky</label></li>
+            <li><label><input id="leukoplast" type="checkbox">Leukoplast</label></li>
+            <li><label><input id="zubna_kefka_a_pasta" type="checkbox">Zubná kefka a pasta</label></li>
+            <li><label><input id="tycinky_do_usi" type="checkbox">Tyčinky do uší</label></li>
+            <li><label><input id="holiaci_strojcek_ziletka" type="checkbox">Holiaci strojček / žiletka</label></li>
+            <li><label><input id="antiperspirant" type="checkbox">Antiperspirant</label></li>
+            <li><label><input id="sampon" type="checkbox">Šampón</label></li>
+            <li><label><input id="mydlo_sprchovaci_gel" type="checkbox">Mydlo / sprchovací gél</label></li>
+            <li><label><input id="labello" type="checkbox">Labello</label></li>
+            <li><label><input id="repelent" type="checkbox">Repelent</label></li>
+            <li><label><input id="krem_na_opalovanie" type="checkbox">Krém na opaľovanie</label></li>
+        </ul>
+
+        <h2 id="oblecenie">OBLEČENIE</h2>
+        <ul>
+            <li><label><input id="tricka" type="checkbox">Tričká</label></li>
+            <li><label><input id="kratasy" type="checkbox">Kraťasy</label></li>
+            <li><label><input id="rifle" type="checkbox">Rifle</label></li>
+            <li><label><input id="teplaky" type="checkbox">Tepláky</label></li>
+            <li><label><input id="ponozky_kotnikove" type="checkbox">Ponožky kotníkové</label></li>
+            <li><label><input id="ponozky_vysoke" type="checkbox">Ponožky vysoké</label></li>
+            <li><label><input id="trenky" type="checkbox">Trenky</label></li>
+            <li><label><input id="pyzamo" type="checkbox">Pyžamo</label></li>
+            <li><label><input id="mikina" type="checkbox">Mikina</label></li>
+            <li><label><input id="bunda" type="checkbox">Bunda</label></li>
+            <li><label><input id="taska_igelitka_na_spinave_pradlo" type="checkbox">Taška / igelitka na špinavé prádlo</label></li>
+            <li><label><input id="pokryvka_hlavy" type="checkbox">Pokrývka hlavy</label></li>
+            <li><label><input id="uterak" type="checkbox">Uterák</label></li>
+            <li><label><input id="maly_uterak" type="checkbox">Malý uterák</label></li>
+            <li><label><input id="plavky" type="checkbox">Plavky</label></li>
+            <li><label><input id="vankus" type="checkbox">Vankúš</label></li>
+            <li><label><input id="slnecne_okuliare" type="checkbox">Slnečné okuliare</label></li>
+            <li><label><input id="termogate_a_termotricko" type="checkbox">Termogate a termotričko</label></li>
+        </ul>
+
+        <h2 id="topanky">TOPÁNKY</h2>
+        <ul>
+            <li><label><input id="tenisky" type="checkbox">Tenisky</label></li>
+            <li><label><input id="turisticke_boty" type="checkbox">Turistické boty</label></li>
+            <li><label><input id="prezuvky" type="checkbox">Prezúvky</label></li>
+        </ul>
+
+        <h2 id="doklady">DOKLADY</h2>
+        <ul>
+            <li><label><input id="penazenka" type="checkbox">Peňaženka</label></li>
+            <li><label><input id="cash" type="checkbox">Cash</label></li>
+            <li><label><input id="kreditka" type="checkbox">Kreditka</label></li>
+            <li><label><input id="obciansky_preukaz" type="checkbox">Občiansky preukaz</label></li>
+            <li><label><input id="vodicsky_preukaz" type="checkbox">Vodičský preukaz</label></li>
+            <li><label><input id="karta_poistenca" type="checkbox">Karta poistenca</label></li>
+            <li><label><input id="isic" type="checkbox">ISIC</label></li>
+            <li><label><input id="vlacenka" type="checkbox">Vlačenka</label></li>
+            <li><label><input id="listky_vlak_bus" type="checkbox">Lístky /vlak, bus/</label></li>
+        </ul>
+
+        <h2 id="technika">TECHNIKA</h2>
+        <ul>
+            <li><label><input id="nabijacka_usb_c_lightning" type="checkbox">Nabíjačka USB-C & Lightning</label></li>
+            <li><label><input id="nabijacka_apple_watch" type="checkbox">Nabíjačka Apple Watch</label></li>
+            <li><label><input id="powerbanka" type="checkbox">Powerbanka</label></li>
+            <li><label><input id="celovka_baterka" type="checkbox">Čelovka / baterka</label></li>
+            <li><label><input id="rozdvojka" type="checkbox">Rozdvojka</label></li>
+            <li><label><input id="bezdrotozby_reprak" type="checkbox">Bezdrôtobvý reprák</label></li>
+            <li><label><input id="reduckia_na_jack" type="checkbox">Redukcia na jack</label></li>
+            <li><label><input id="sluchatka" type="checkbox">Slúchatká</label></li>
+        </ul>
+
+        <h2 id="ine">INÉ</h2>
+        <ul>
+            <li><label><input id="servitky" type="checkbox">Servítky</label></li>
+            <li><label><input id="ruksak" type="checkbox">Ruksak</label></li>
+            <li><label><input id="fen" type="checkbox">Fén</label></li>
+            <li><label><input id="flasa" type="checkbox">Fľaša</label></li>
+            <li><label><input id="brnkatko" type="checkbox">Brnkátko</label></li>
+            <li><label><input id="toaletny_papier" type="checkbox">Toaletný papier</label></li>
+            <li><label><input id="dazdnik_ponco" type="checkbox">Dáždnik / Pončo</label></li>
+        </ul>
+
+        <h2 id="stanovacka">STANOVAČKA</h2>
+        <ul>
+            <li><label><input id="spacak" type="checkbox">Spacák</label></li>
+            <li><label><input id="karimatka" type="checkbox">Karimatka</label></li>
+            <li><label><input id="skraboska" type="checkbox">Škraboska</label></li>
+            <li><label><input id="bufka" type="checkbox">Bufka</label></li>
+        </ul>
+
+        <h2 id="miesta-vo-vlaku">MIESTA VO VLAKU</h2>
+
+        <p>^^^^^^^^^^</p>
+
+        <p>6 4 - 8 2</p>
+
+        <p>5 7 - 3 1</p>
+
     </div>
-    <script src="index.js"></script>
+
+    <script>
+        // Get the checkboxes
+        const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+
+        // Load the state of checked items from localStorage
+        const savedState = localStorage.getItem('checkedItems');
+        const checkedItems = savedState ? JSON.parse(savedState) : {};
+
+        // Loop through the checkboxes and set their checked state
+        checkboxes.forEach(checkbox => {
+            if (checkedItems[checkbox.id]) {
+                checkbox.checked = true;
+            }
+
+            // Add event listener to update the checkedItems object
+            checkbox.addEventListener('change', event => {
+                if (event.target.checked) {
+                    checkedItems[event.target.id] = true;
+                } else {
+                    delete checkedItems[event.target.id];
+                }
+
+                // Save the state of checked items to localStorage
+                localStorage.setItem('checkedItems', JSON.stringify(checkedItems));
+            });
+        });
+    </script>
+
 </body>
 
 </html>
