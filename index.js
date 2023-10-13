@@ -1,13 +1,10 @@
 function createChapterSelectOptions() {
-    var selectedBook = document.querySelector('select[name="book"]').value;
-    var chaptersCount = numberOfChaptersInBooks[selectedBook];
-    var select = document.querySelector('select[name="chapter"]');
-    select.innerHTML = '';
-    for (var i = 1; i <= chaptersCount; i++) {
-        var option = document.createElement('option');
-        option.value = i;
-        option.innerHTML = i;
-        select.appendChild(option);
+    const selectedBook = document.querySelector('select[name="book"]').value;
+    const chaptersCount = numberOfChaptersInBooks[selectedBook];
+    const chapterSelect = document.querySelector('select[name="chapter"]');
+    chapterSelect.innerHTML = '';
+    for (let i = 1; i <= chaptersCount; i++) {
+        chapterSelect.add(new Option(i, i));
     }
 }
 
