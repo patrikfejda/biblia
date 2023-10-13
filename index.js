@@ -32,16 +32,11 @@ function readSelectionsFromLocalStorage() {
 }
 
 function printBibleChapter() {
-    var bookName = document.querySelector('select[name="book"]').value;
-    var bookNameHumanReadable = humanReadableFormat[bookName];
-    var chapterName = document.querySelector('select[name="chapter"]').value;
-    var text = `<h1>${bookNameHumanReadable} kap. ${chapterName}</h1>`;
-    var chapter = bible[bookName][chapterName];
-    var verseText = '';
-    for (var verseNumber in chapter) {
-        var verse = chapter[verseNumber];
-        verseText += `<sup>${verseNumber}</sup> ${verse}<br>`;
-    }
+    const bookName = document.querySelector('select[name="book"]').value;
+    const chapterName = document.querySelector('select[name="chapter"]').value;
+    const chapter = bible[bookName][chapterName];
+    const text = `<h1>${humanReadableFormat[bookName]} kap. ${chapterName}</h1>`;
+    const verseText = Object.entries(chapter).map(([verseNumber, verse]) => `<sup>${verseNumber}</sup> ${verse}<br>`).join('');
     document.getElementById("text").innerHTML = text + verseText;
 }
 
