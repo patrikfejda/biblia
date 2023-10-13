@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="bible.js"></script>
+</head>
+
+<body>
+
+    <select name="book" aria-label="Zvolite knihu">
+        <option value="genezis" selected>Gn</option>
+        <option value="exodus">Ex</option>
+        <option value="levitikus">Lv</option>
+        <option value="numeri">Nm</option>
+        <option value="deuteronomium">Dt</option>
+        <option value="kniha-jozue">Joz</option>
+        <option value="kniha-sudcov">Sdc</option>
+        <option value="kniha-rut">Rút</option>
+        <option value="prva-kniha-samuelova">1Sam</option>
+        <option value="druha-kniha-samuelova">2Sam</option>
+        <option value="prva-kniha-kralov">1Kr</option>
+        <option value="druha-kniha-kralov">2Kr</option>
+        <option value="prva-kniha-kronik">1Krn</option>
+        <option value="druha-kniha-kronik">2Krn</option>
+        <option value="kniha-ezdrasova">Ezd</option>
+        <option value="kniha-nehemiasova">Neh</option>
+        <option value="kniha-tobias">Tob</option>
+        <option value="kniha-judita">Jdt</option>
+        <option value="kniha-ester">Est</option>
+        <option value="kniha-job">Jób</option>
+        <option value="zalm">Ž</option>
+        <option value="kniha-prislovi">Prís</option>
+        <option value="kniha-kazatel">Kaz</option>
+        <option value="piesen-piesni">Pies</option>
+        <option value="kniha-mudrosti">Múd</option>
+        <option value="kniha-sirachovcova">Sir</option>
+        <option value="kniha-proroka-izaiasa">Iz</option>
+        <option value="kniha-proroka-jeremiasa">Jer</option>
+        <option value="kniha-nareky">Nár</option>
+        <option value="kniha-proroka-barucha">Bar</option>
+        <option value="kniha-proroka-ezechiela">Ez</option>
+        <option value="kniha-proroka-daniela">Dan</option>
+        <option value="kniha-proroka-ozeasa">Oz</option>
+        <option value="kniha-proroka-joela">Joel</option>
+        <option value="kniha-proroka-amosa">Am</option>
+        <option value="kniha-proroka-abdiasa">Abd</option>
+        <option value="kniha-proroka-jonasa">Jon</option>
+        <option value="kniha-proroka-micheasa">Mich</option>
+        <option value="kniha-proroka-nahuma">Nah</option>
+        <option value="kniha-proroka-habakuka">Hab</option>
+        <option value="kniha-proroka-sofoniasa">Sof</option>
+        <option value="kniha-proroka-aggea">Ag</option>
+        <option value="kniha-proroka-zachariasa">Zach</option>
+        <option value="kniha-proroka-malachiasa">Mal</option>
+        <option value="prva-kniha-machabejcov">1Mach</option>
+        <option value="druha-kniha-machabejcov">2Mach</option>
+        <option value="evanjelium-podla-matusa">Mt</option>
+        <option value="evanjelium-podla-marka">Mk</option>
+        <option value="evanjelium-podla-lukasa">Lk</option>
+        <option value="evanjelium-podla-jana">Jn</option>
+        <option value="skutky-apostolov">Sk</option>
+        <option value="list-rimanom">Rim</option>
+        <option value="prvy-list-korintanom">1Kor</option>
+        <option value="druhy-list-korintanom">2Kor</option>
+        <option value="list-galatanom">Gal</option>
+        <option value="list-efezanom">Ef</option>
+        <option value="list-filipanom">Flp</option>
+        <option value="list-kolosanom">Kol</option>
+        <option value="prvy-list-soluncanom">1Sol</option>
+        <option value="druhy-list-soluncanom">2Sol</option>
+        <option value="prvy-list-timotejovi">1Tim</option>
+        <option value="druhy-list-timotejovi">2Tim</option>
+        <option value="list-titovi">Tít</option>
+        <option value="list-filemonovi">Flm</option>
+        <option value="list-hebrejom">Hebr</option>
+        <option value="jakubov-list">Jak</option>
+        <option value="prvy-petrov-list">1Pt</option>
+        <option value="druhy-petrov-list">2Pt</option>
+        <option value="prvy-janov-list">1Jn</option>
+        <option value="druhy-janov-list">2Jn</option>
+        <option value="treti-janov-list">3Jn</option>
+        <option value="judov-list">Júd</option>
+        <option value="kniha-zjavenia">Zjv</option>
+    </select>
+    <select name="chapter" aria-label="Zvolite kapitolu">
+        <option value="1" selected="selected">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+        <option value="11">11</option>
+        <option value="12">12</option>
+        <option value="13">13</option>
+        <option value="14">14</option>
+        <option value="15">15</option>
+        <option value="16">16</option>
+        <option value="17">17</option>
+        <option value="18">18</option>
+        <option value="19">19</option>
+        <option value="20">20</option>
+        <option value="21">21</option>
+        <option value="22">22</option>
+        <option value="23">23</option>
+        <option value="24">24</option>
+        <option value="25">25</option>
+        <option value="26">26</option>
+        <option value="27">27</option>
+        <option value="28">28</option>
+        <option value="29">29</option>
+        <option value="30">30</option>
+        <option value="31">31</option>
+        <option value="32">32</option>
+        <option value="33">33</option>
+        <option value="34">34</option>
+        <option value="35">35</option>
+        <option value="36">36</option>
+        <option value="37">37</option>
+        <option value="38">38</option>
+        <option value="39">39</option>
+        <option value="40">40</option>
+        <option value="41">41</option>
+        <option value="42">42</option>
+        <option value="43">43</option>
+        <option value="44">44</option>
+        <option value="45">45</option>
+        <option value="46">46</option>
+        <option value="47">47</option>
+        <option value="48">48</option>
+        <option value="49">49</option>
+        <option value="50">50</option>
+    </select>
+    <button id="button">Zobraz</button>
+    <div id="text"></div>
+    <script src="index.js"></script>
+</body>
+
+</html>
