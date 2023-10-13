@@ -9,15 +9,15 @@ function createChapterSelectOptions() {
 }
 
 function saveSelectionToLocalStorage() {
-    var bookName = document.querySelector('select[name="book"]').value;
-    var chapterName = document.querySelector('select[name="chapter"]').value;
+    const bookName = document.querySelector('select[name="book"]').value;
+    const chapterName = document.querySelector('select[name="chapter"]').value;
     localStorage.setItem("bookName", bookName);
     localStorage.setItem("chapterName", chapterName);
 }
 
 function readSelectionsFromLocalStorage() {
-    var storedBookName = localStorage.getItem("bookName");
-    var storedChapterName = localStorage.getItem("chapterName");
+    const storedBookName = localStorage.getItem("bookName");
+    const storedChapterName = localStorage.getItem("chapterName");
 
     if (storedBookName) {
         document.querySelector('select[name="book"]').value = storedBookName;
