@@ -31,6 +31,7 @@ function readSelectionsFromLocalStorage() {
 function printBibleChapter() {
     const bookName = document.querySelector('select[name="book"]').value;
     const chapterName = document.querySelector('select[name="chapter"]').value;
+    const listenGoogleTranslate = document.getElementById('listen-google-translate');
     const chapter = bible[bookName][chapterName];
 
     const container = document.getElementById("text");
@@ -48,8 +49,15 @@ function printBibleChapter() {
         verseText.appendChild(verseElement);
     });
 
+    wholeText = ""
+    Object.entries(chapter).forEach(([verseNumber, verse]) => {
+        wholeText += verse
+    });
+
     container.appendChild(title);
     container.appendChild(verseText);
+
+    listenGoogleTranslate.href = `https://translate.google.com/?sl=auto&tl=sv&op=translate&text=${wholeText}`;
 }
 
 function generateBookOptions() {
